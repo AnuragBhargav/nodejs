@@ -10,12 +10,16 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
 
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
+- task: cURLUploader@2
+  inputs:
+    files: '*'
+    authType: 'UserAndPass'
+    username: 'admin'
+    password: 'Devops@123'
+    url: 'http://34.68.43.245:8081/artifactory/libs-snapshot-local'
+  
+# - script: |
+#     npm install
+#     npm run build
+#   displayName: 'npm install and build'
